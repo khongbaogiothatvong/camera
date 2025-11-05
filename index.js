@@ -4,7 +4,7 @@
 const app = document.getElementById("app");
 
 const cameras = [
-  { name: "Camera IP 4MP", img: "images/cam1.jpg", price: 1500000 },
+  { name: "Camera IP 4MP", img: "images/cam21.jpg", price: 1500000 },
   { name: "Camera Full HD 1080p", img: "images/cam2.jpg", price: 2200000 },
   { name: "Camera Dome 2MP", img: "images/cam3.jpg", price: 1200000 },
   { name: "Camera PTZ 4K", img: "images/cam4.jpg", price: 5500000 },
@@ -134,3 +134,4 @@ document.getElementById("btn-filter").addEventListener("click", () => {
     </div>
   `;
 });
+
