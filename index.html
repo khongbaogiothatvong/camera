@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 🔷 HEADER / BANNER -->
+  <header class="banner-header">
+    <div class="banner-wrapper">
+      <img src="images/banner.jpg" alt="Camera Store Banner">
+    </div>
+  </header>
+
+  <!-- 🔷 MENU + HOTLINE CHẠY -->
+ <nav class="main-nav">
+  <div class="nav-links">
+    <a href="index.html">Trang chủ</a>
+    <a href="run.html?page=gioi-thieu">Giới thiệu</a>
+  </div>
+
+  <!-- 🔹 Form tìm kiếm theo giá -->
+  <div class="search-price">
+    <input type="number" id="min-price" placeholder="Giá từ (₫)" min="0">
+    <input type="number" id="max-price" placeholder="Đến (₫)" min="0">
+    <button id="btn-filter">Tìm</button>
+  </div>
+
+  <div class="hotline-container">
+    <div class="hotline-text">
+      🔥 Hotline: 0387.722.317 – Trung tâm Việc làm Vĩnh Long 🔥
+    </div>
+  </div>
+</nav>
+
+  <!-- 🔷 Danh sách sản phẩm -->
+  <main id="app">
+    <!-- JS sẽ render sản phẩm ở đây -->
+  </main>
+  <script src="index.js"></script>
+  <!-- 🔷 Lightbox phóng to ảnh -->
+<div class="img-overlay">
+  <img src="" alt="Phóng to ảnh">
+</div>
+</body>
+</html>
