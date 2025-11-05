@@ -9,21 +9,21 @@ const cameras = [
   { name: "Camera Dome 2MP", img: "images/cam3.jpg", price: 1200000 },
   { name: "Camera PTZ 4K", img: "images/cam4.jpg", price: 5500000 },
   { name: "Camera Hành Trình", img: "images/cam5.jpg", price: 2800000 },
-  { name: "Camera IP WiFi 3MP", img: "images/cam6.jpg", price: 1650000 },
-  { name: "Camera Ngoài Trời Chống Nước", img: "images/cam7.jpg", price: 2950000 },
-  { name: "Camera Mini 1080p", img: "images/cam8.jpg", price: 1100000 },
-  { name: "Camera An Ninh Hồng Ngoại", img: "images/cam9.jpg", price: 1800000 },
+  { name: "Camera IP WiFi", img: "images/cam6.jpg", price: 1650000 },
+  { name: "Camera Ngoài Trời", img: "images/cam7.jpg", price: 2950000 },
+  { name: "Camera Mini ", img: "images/cam8.jpg", price: 1100000 },
+  { name: "Camera An Ninh", img: "images/cam9.jpg", price: 1800000 },
   { name: "Camera WiFi 360°", img: "images/cam10.jpg", price: 2400000 },
-  { name: "Camera IP 8MP UltraHD", img: "images/cam11.jpg", price: 4900000 },
-  { name: "Camera Quan Sát 4 Kênh", img: "images/cam12.jpg", price: 3800000 },
-  { name: "Camera Dome Hồng Ngoại", img: "images/cam13.jpg", price: 1350000 },
-  { name: "Camera PTZ Zoom Quang 25X", img: "images/cam14.jpg", price: 6200000 },
-  { name: "Camera Giám Sát Ban Đêm", img: "images/cam15.jpg", price: 1950000 },
-  { name: "Camera Hành Trình Xe Hơi 2K", img: "images/cam16.jpg", price: 2600000 },
-  { name: "Camera IP Trong Nhà 2MP", img: "images/cam17.jpg", price: 1250000 },
-  { name: "Camera Thông Minh AI", img: "images/cam18.jpg", price: 3400000 },
-  { name: "Camera Không Dây Mini", img: "images/cam19.jpg", price: 1050000 },
-  { name: "Camera 4K UltraHD Chống Nước", img: "images/cam20.jpg", price: 5900000 }
+  { name: "Camera IP 8MP", img: "images/cam11.jpg", price: 4900000 },
+  { name: "Camera 4 Kênh", img: "images/cam12.jpg", price: 3800000 },
+  { name: "Camera Hồng Ngoại", img: "images/cam13.jpg", price: 1350000 },
+  { name: "Camera PTZ Zoom", img: "images/cam14.jpg", price: 6200000 },
+  { name: "Camera Ban Đêm", img: "images/cam15.jpg", price: 1950000 },
+  { name: "Camera Hành Trình", img: "images/cam16.jpg", price: 2600000 },
+  { name: "Camera Trong Nhà", img: "images/cam17.jpg", price: 1250000 },
+  { name: "Camera Thông Minh ", img: "images/cam18.jpg", price: 3400000 },
+  { name: "Camera  Mini", img: "images/cam19.jpg", price: 1050000 },
+  { name: "Camera UltraHD", img: "images/cam20.jpg", price: 5900000 }
 ];
 
 // ===============================
@@ -134,4 +134,5 @@ document.getElementById("btn-filter").addEventListener("click", () => {
     </div>
   `;
 });
+
 
