@@ -32,7 +32,7 @@ const cameras = [
 function renderProducts(list) {
   app.innerHTML = `
     <main>
-      <h1>Chọn sản phẩm</h1>
+      <h1> DANH SÁCH SẢN PHẨM </h1>
       <div class="product-grid">
         ${list.map((cam, i) => `
           <div class="product-card">
@@ -153,3 +153,4 @@ document.getElementById("btn-filter")?.addEventListener("click", filterProducts)
 // 🚀 KHỞI CHẠY
 // ===============================
 renderProducts(cameras);
+
