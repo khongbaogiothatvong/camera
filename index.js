@@ -33,7 +33,7 @@ const cameras = [
 function renderProducts(list) {
   app.innerHTML = `
     <main>
-      <h1>Chọn sản phẩm</h1>
+      <h1> DANH SÁCH SẢN PHẨM </h1>
       <div class="product-grid">
         ${list.map((cam, i) => `
           <div class="product-card">
@@ -58,8 +58,8 @@ function renderProducts(list) {
     </main>
 
     <footer>
-      <h3>Trung tâm Việc làm Vĩnh Long</h3>
-      <p>Số 55 Mậu Thân, Phường 3, TP. Vĩnh Long</p>
+      <h3>NHẬP MÔN LẬP TRÌNH WEB - CT188 - HK 1 - NĂM HỌC 2025-2026</h3>
+      <p>Nhóm 7: TB25V7X106, UH25V7X006, UH25V7X300, VL25V7X100, VT25V7X316</p>
     </footer>
 
     <div class="img-overlay" style="display:none;">
@@ -154,6 +154,7 @@ document.getElementById("btn-filter")?.addEventListener("click", filterProducts)
 // 🚀 KHỞI CHẠY
 // ===============================
 renderProducts(cameras);
+
 
 
 
