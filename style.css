@@ -323,3 +323,7 @@ main {
 .qty-input[type=number] {
   -moz-appearance: textfield;
 }
+.price {
+  color: red;
+  font-weight: bold;
+}
