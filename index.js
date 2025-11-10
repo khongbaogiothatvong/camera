@@ -5,27 +5,26 @@ const app = document.getElementById("app");
 
 const cameras = [
   { name: "Camera IP 4MP", img: "images/cam21.jpg", price: 1500000 },
-  { name: "Camera  HD ", img: "images/cam2.jpg", price: 2200000 },
+  { name: "Camera Full HD", img: "images/cam2.jpg", price: 2200000 },
   { name: "Camera Dome 2MP", img: "images/cam3.jpg", price: 1200000 },
   { name: "Camera PTZ 4K", img: "images/cam4.jpg", price: 5500000 },
   { name: "Camera Hành Trình", img: "images/cam5.jpg", price: 2800000 },
-  { name: "Camera IP WiFi", img: "images/cam6.jpg", price: 1650000 },
+  { name: "Camera IP WiFi 3MP", img: "images/cam6.jpg", price: 1650000 },
   { name: "Camera Ngoài Trời", img: "images/cam7.jpg", price: 2950000 },
-  { name: "Camera Mini ", img: "images/cam8.jpg", price: 1100000 },
+  { name: "Camera Mini 1080p", img: "images/cam8.jpg", price: 1100000 },
   { name: "Camera An Ninh", img: "images/cam9.jpg", price: 1800000 },
   { name: "Camera WiFi 360°", img: "images/cam10.jpg", price: 2400000 },
   { name: "Camera IP 8MP", img: "images/cam11.jpg", price: 4900000 },
-  { name: "Camera 4 Kênh", img: "images/cam12.jpg", price: 3800000 },
-  { name: "Camera Hồng Ngoại", img: "images/cam13.jpg", price: 1350000 },
-  { name: "Camera PTZ Zoom", img: "images/cam14.jpg", price: 6200000 },
+  { name: "Camera Quan Sát", img: "images/cam12.jpg", price: 3800000 },
+  { name: "Camera Dome", img: "images/cam13.jpg", price: 1350000 },
+  { name: "Camera PTZ", img: "images/cam14.jpg", price: 6200000 },
   { name: "Camera Ban Đêm", img: "images/cam15.jpg", price: 1950000 },
-  { name: "Camera Hành Trình", img: "images/cam16.jpg", price: 2600000 },
-  { name: "Camera Trong Nhà", img: "images/cam17.jpg", price: 1250000 },
-  { name: "Camera Thông Minh ", img: "images/cam18.jpg", price: 3400000 },
-  { name: "Camera  Mini", img: "images/cam19.jpg", price: 1050000 },
-  { name: "Camera UltraHD", img: "images/cam20.jpg", price: 5900000 }
+  { name: "Camera Hành Trình 2", img: "images/cam16.jpg", price: 2600000 },
+  { name: "Camera IP Trong Nhà", img: "images/cam17.jpg", price: 1250000 },
+  { name: "Camera Thông Minh", img: "images/cam18.jpg", price: 3400000 },
+  { name: "Camera Không Dây", img: "images/cam19.jpg", price: 1050000 },
+  { name: "Camera 4K UltraHD", img: "images/cam20.jpg", price: 5900000 }
 ];
-
 
 // ===============================
 // 🧩 HÀM HIỂN THỊ DANH SÁCH SẢN PHẨM
@@ -33,13 +32,13 @@ const cameras = [
 function renderProducts(list) {
   app.innerHTML = `
     <main>
-      <h1> DANH SÁCH SẢN PHẨM </h1>
+      <h1>Chọn sản phẩm</h1>
       <div class="product-grid">
         ${list.map((cam, i) => `
           <div class="product-card">
             <img src="${cam.img}" alt="${cam.name}" class="zoomable">
             <h3>${cam.name}</h3>
-            <p>${cam.price.toLocaleString("vi-VN")} ₫</p>
+            <p><span class="price">${cam.price.toLocaleString("vi-VN")} VNĐ</span></p>
             <div class="qty-wrapper">
               <label for="qty${i}">Số lượng:</label>
               <div class="qty-box">
@@ -57,7 +56,7 @@ function renderProducts(list) {
       </div>
     </main>
 
-    <footer>
+     <footer>
       <h3>NHẬP MÔN LẬP TRÌNH WEB - CT188 - HK 1 - NĂM HỌC 2025-2026</h3>
       <p>Nhóm 7: TB25V7X106, UH25V7X006, UH25V7X300, VL25V7X100, VT25V7X316</p>
     </footer>
@@ -154,8 +153,3 @@ document.getElementById("btn-filter")?.addEventListener("click", filterProducts)
 // 🚀 KHỞI CHẠY
 // ===============================
 renderProducts(cameras);
-
-
-
-
-
