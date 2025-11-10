@@ -26,114 +26,135 @@ const cameras = [
   { name: "Camera UltraHD", img: "images/cam20.jpg", price: 5900000 }
 ];
 
+
 // ===============================
-// 🧩 HIỂN THỊ GIAO DIỆN CHÍNH
+// 🧩 HÀM HIỂN THỊ DANH SÁCH SẢN PHẨM
 // ===============================
-app.innerHTML = `
-  <main>
-    <h1>Chọn sản phẩm</h1>
-    <div class="product-grid">
-      ${cameras.map((cam, i) => `
-        <div class="product-card">
-          <img src="${cam.img}" alt="${cam.name}">
-          <h3>${cam.name}</h3>
-          <p>${cam.price.toLocaleString("vi-VN")} ₫</p>
-          <div class="qty-wrapper">
-            <label for="qty${i}">Số lượng:</label>
-            <input type="number" min="0" value="0" id="qty${i}">
+function renderProducts(list) {
+  app.innerHTML = `
+    <main>
+      <h1>Chọn sản phẩm</h1>
+      <div class="product-grid">
+        ${list.map((cam, i) => `
+          <div class="product-card">
+            <img src="${cam.img}" alt="${cam.name}" class="zoomable">
+            <h3>${cam.name}</h3>
+            <p>${cam.price.toLocaleString("vi-VN")} ₫</p>
+            <div class="qty-wrapper">
+              <label for="qty${i}">Số lượng:</label>
+              <div class="qty-box">
+                <button type="button" class="qty-btn minus" data-id="${i}">−</button>
+                <input type="number" min="0" value="0" id="qty${i}" class="qty-input">
+                <button type="button" class="qty-btn plus" data-id="${i}">+</button>
+              </div>
+            </div>
           </div>
-        </div>
-      `).join('')}
-    </div>
+        `).join("")}
+      </div>
 
-    <div style="text-align:center; margin-top:30px;">
-      <button class="btn" id="btn-buy">Thanh toán</button>
+      <div style="text-align:center; margin-top:30px;">
+        <button class="btn" id="btn-buy">Thanh toán</button>
+      </div>
+    </main>
+
+    <footer>
+      <h3>Trung tâm Việc làm Vĩnh Long</h3>
+      <p>Số 55 Mậu Thân, Phường 3, TP. Vĩnh Long</p>
+    </footer>
+
+    <div class="img-overlay" style="display:none;">
+      <img src="" alt="Phóng to ảnh">
     </div>
-  </main>
-  <footer>
-    <h3>Trung tâm Việc làm Vĩnh Long</h3>
-    <p>Số 55 Mậu Thân, Phường 3, TP. Vĩnh Long</p>
-  </footer>
-`;
+  `;
+
+  attachEvents(list);
+}
 
 // ===============================
-// 💰 NÚT THANH TOÁN
+// 🧠 GẮN SỰ KIỆN SAU KHI HIỂN THỊ
 // ===============================
-document.getElementById("btn-buy").addEventListener("click", () => {
-  const cart = [];
+function attachEvents(list) {
+ // 🔹 Nút tăng / giảm số lượng (giá trị không nhỏ hơn 0)
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("plus") || e.target.classList.contains("minus")) {
+    const id = e.target.dataset.id;
+    const input = document.getElementById(`qty${id}`); // ✅ có backtick
+    let value = parseInt(input.value) || 0; // nếu rỗng hoặc NaN → gán 0
 
-  cameras.forEach((cam, i) => {
-    const qty = parseInt(document.getElementById(`qty${i}`).value) || 0;
-    if (qty > 0) cart.push({ ...cam, qty });
-  });
+    if (e.target.classList.contains("plus")) {
+      value++;
+    } else if (e.target.classList.contains("minus")) {
+      value = Math.max(0, value - 1); // ✅ không cho xuống < 0
+    }
 
-  if (cart.length === 0) {
-    alert("Vui lòng chọn ít nhất 1 sản phẩm!");
-    return;
+    input.value = value;
   }
-
-  // Lưu giỏ hàng
-  localStorage.setItem("cart", JSON.stringify(cart));
-
-  // Chuyển sang trang tính tiền
-  window.location.href = "thanhtoan.html";
 });
 
-// ===============================
-// 🔍 PHÓNG TO / THU NHỎ ẢNH (LIGHTBOX)
-// ===============================
-window.addEventListener("DOMContentLoaded", () => {
+
+
+  // Nút Thanh toán
+  document.getElementById("btn-buy").addEventListener("click", () => {
+    const cart = [];
+
+    list.forEach((cam, i) => {
+      const qty = parseInt(document.getElementById(`qty${i}`).value) || 0;
+      if (qty > 0) cart.push({ ...cam, qty });
+    });
+
+    if (cart.length === 0) {
+      alert("Vui lòng chọn ít nhất 1 sản phẩm!");
+      return;
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    window.location.href = "thanhtoan.html";
+  });
+
+  // Lightbox ảnh
   const overlay = document.querySelector(".img-overlay");
   const overlayImg = overlay.querySelector("img");
 
-  // Khi click vào ảnh sản phẩm
   document.addEventListener("click", (e) => {
-    if (e.target.matches(".product-card img")) {
+    if (e.target.classList.contains("zoomable")) {
       overlayImg.src = e.target.src;
       overlay.style.display = "flex";
     }
   });
 
-  // Khi click vào overlay → đóng ảnh
   overlay.addEventListener("click", () => {
     overlay.style.display = "none";
   });
 
-  // Nhấn phím ESC → cũng đóng ảnh
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      overlay.style.display = "none";
-    }
+    if (e.key === "Escape") overlay.style.display = "none";
   });
-});
-document.getElementById("btn-filter").addEventListener("click", () => {
-  const min = parseInt(document.getElementById("min-price").value) || 0;
-  const max = parseInt(document.getElementById("max-price").value) || Infinity;
+}
+
+// ===============================
+// 🔎 LỌC THEO GIÁ
+// ===============================
+function filterProducts() {
+  const min = parseInt(document.getElementById("min-price")?.value) || 0;
+  const max = parseInt(document.getElementById("max-price")?.value) || Infinity;
 
   const filtered = cameras.filter(cam => cam.price >= min && cam.price <= max);
 
-  const app = document.getElementById("app");
-  if(filtered.length === 0){
+  if (filtered.length === 0) {
     app.innerHTML = `<h3 style="text-align:center; margin-top:20px;">Không có sản phẩm nào trong khoảng giá này!</h3>`;
     return;
   }
 
-  app.innerHTML = `
-    <div class="product-grid">
-      ${filtered.map((cam, i) => `
-        <div class="product-card">
-          <img src="${cam.img}" alt="${cam.name}">
-          <h3>${cam.name}</h3>
-          <p>${cam.price.toLocaleString("vi-VN")} ₫</p>
-          <div class="qty-wrapper">
-            <label for="qty${i}">Số lượng:</label>
-            <input type="number" min="0" value="0" id="qty${i}">
-          </div>
-        </div>
-      `).join('')}
-    </div>
-  `;
-});
+  renderProducts(filtered);
+}
+
+document.getElementById("btn-filter")?.addEventListener("click", filterProducts);
+
+// ===============================
+// 🚀 KHỞI CHẠY
+// ===============================
+renderProducts(cameras);
+
 
 
 
