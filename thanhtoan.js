@@ -2,7 +2,7 @@ const checkout = document.getElementById("checkout");
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 function formatVND(price) {
-  return price.toLocaleString("vi-VN") + " ₫";
+  return price.toLocaleString("vi-VN") + " VNĐ";
 }
 
 if (cart.length === 0) {
@@ -74,3 +74,4 @@ document.addEventListener("click", (e) => {
     window.print(); // Mở hộp thoại in
   }
 });
+
