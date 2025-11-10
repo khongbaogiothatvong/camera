@@ -52,6 +52,7 @@ h1, h2 {
   font-weight: bold;
 }
 
+/* ==== Hotline chạy ngang ==== */
 .hotline-container {
   width: 100%;
   overflow: hidden;
@@ -73,22 +74,20 @@ h1, h2 {
   text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
 }
 
-/* 🔹 Hiệu ứng chữ chạy ngang */
 @keyframes scroll-left {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-100%); }
 }
 
-/* 🌈 Hiệu ứng phát sáng 7 màu */
 @keyframes glow-rainbow {
-  0% { color: red; text-shadow: 0 0 10px red, 0 0 20px red, 0 0 40px red; }
-  14% { color: orange; text-shadow: 0 0 10px orange, 0 0 20px orange, 0 0 40px orange; }
-  28% { color: yellow; text-shadow: 0 0 10px yellow, 0 0 20px yellow, 0 0 40px yellow; }
-  42% { color: green; text-shadow: 0 0 10px lime, 0 0 20px lime, 0 0 40px lime; }
-  57% { color: cyan; text-shadow: 0 0 10px cyan, 0 0 20px cyan, 0 0 40px cyan; }
-  71% { color: blue; text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 40px blue; }
-  85% { color: violet; text-shadow: 0 0 10px violet, 0 0 20px violet, 0 0 40px violet; }
-  100% { color: red; text-shadow: 0 0 10px red, 0 0 20px red, 0 0 40px red; }
+  0% { color: red; text-shadow: 0 0 10px red; }
+  14% { color: orange; text-shadow: 0 0 10px orange; }
+  28% { color: yellow; text-shadow: 0 0 10px yellow; }
+  42% { color: green; text-shadow: 0 0 10px lime; }
+  57% { color: cyan; text-shadow: 0 0 10px cyan; }
+  71% { color: blue; text-shadow: 0 0 10px blue; }
+  85% { color: violet; text-shadow: 0 0 10px violet; }
+  100% { color: red; text-shadow: 0 0 10px red; }
 }
 
 /* ==== Header & Footer ==== */
@@ -166,10 +165,12 @@ main {
   .product-card img { height: 120px; }
   .hotline-text { font-size: 16px; }
 }
+
+/* ==== Tiêu đề hóa đơn ==== */
 .bill-header {
   text-align: center;
   background: #007bff;
-  color: #ffffff !important; /* Ép buộc màu trắng */
+  color: #ffffff !important;
   padding: 15px;
   border-radius: 10px;
   max-width: 1000px;
@@ -180,15 +181,16 @@ main {
 .bill-header h2 {
   font-size: 28px;
   margin: 0;
-  color: #ffffff !important; /* Thêm dòng này để chắc chắn */
+  color: #ffffff !important;
   text-shadow: 0 0 10px rgba(255,255,255,0.8),
                0 0 20px rgba(255,255,255,0.6);
 }
-/* 🔹 Nút Thanh toán to, nổi bật */
+
+/* ==== Nút Thanh toán ==== */
 #btn-buy {
   background: #007bff;
   color: white;
-  font-size: 30px;
+  font-size: 22px;
   font-weight: bold;
   padding: 15px 40px;
   border: none;
@@ -198,23 +200,13 @@ main {
   transition: all 0.3s ease;
 }
 
-/* 🔹 Hiệu ứng khi rê chuột */
 #btn-buy:hover {
-  background: #0056d6;
+  background: linear-gradient(90deg, #0062cc, #3399ff);
   transform: scale(1.08);
   box-shadow: 0 0 25px rgba(0, 123, 255, 0.8);
 }
-/* === Nhóm nút trung tâm === */
-.btn-group {
-  text-align: center;
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  gap: 20px; /* Khoảng cách giữa 2 nút */
-  flex-wrap: wrap;
-}
 
-/* === Nút quay lại === */
+/* ==== Nút quay lại ==== */
 .btn-back {
   display: inline-block;
   background: #6c757d;
@@ -230,43 +222,16 @@ main {
   border: none;
 }
 
-/* Hiệu ứng hover cho nút quay lại */
 .btn-back:hover {
   background: linear-gradient(90deg, #5a6268, #868e96);
   transform: scale(1.08);
   box-shadow: 0 0 20px rgba(108,117,125,0.6);
 }
 
-/* === Nút Thanh toán === */
-#btn-buy {
-  background: #007bff;
-  color: white;
-  font-size: 22px;
-  font-weight: bold;
-  padding: 15px 40px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
-  transition: all 0.3s ease;
-}
-
-/* Hiệu ứng hover cho nút Thanh toán */
-#btn-buy:hover {
-  background: linear-gradient(90deg, #0062cc, #3399ff);
-  transform: scale(1.08);
-  box-shadow: 0 0 25px rgba(0, 123, 255, 0.8);
-}
-/* 🎯 Chỉ in phần bảng hóa đơn */
+/* ==== In hóa đơn ==== */
 @media print {
-  body * {
-    visibility: hidden; /* Ẩn mọi thứ */
-  }
-
-  table, table * {
-    visibility: visible; /* Hiện lại bảng */
-  }
-
+  body * { visibility: hidden; }
+  table, table * { visibility: visible; }
   table {
     position: absolute;
     left: 0;
@@ -274,7 +239,8 @@ main {
     width: 100%;
   }
 }
-/* 🔹 Form tìm kiếm giá */
+
+/* ==== Form lọc giá ==== */
 .search-price {
   display: flex;
   align-items: center;
@@ -303,4 +269,57 @@ main {
 .search-price button:hover {
   background: #218838;
   transform: scale(1.05);
+}
+
+/* ==== Ô chọn số lượng ==== */
+.qty-wrapper {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.qty-box {
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+}
+
+.qty-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  width: 36px;
+  height: 36px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.qty-btn:hover {
+  background-color: #0056d6;
+  transform: scale(1.1);
+}
+
+.qty-input {
+  width: 55px;
+  height: 36px;
+  text-align: center;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: #f8f9fa;
+}
+
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.qty-input[type=number] {
+  -moz-appearance: textfield;
 }
